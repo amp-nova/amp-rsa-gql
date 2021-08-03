@@ -1,0 +1,22 @@
+{
+  "name": "amp-rsa-gql-queries",
+  "version": "1.0.0",
+  "description": "gql queries for amp-rsa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amp-nova/amp-rsa-gql-queries.git"
+  },
+  "author": "dave lilly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amp-nova/amp-rsa-gql-queries/issues"
+  },
+  "homepage": "https://github.com/amp-nova/amp-rsa-gql-queries#readme",
+  "dependencies": {
+    "@apollo/client": "^3.4.1"
+  }
+}
