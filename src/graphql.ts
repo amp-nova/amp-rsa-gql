@@ -1,5 +1,6 @@
 import { createHttpLink, ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import {} from './types'
 
 export default function({ graphqlUrl, backendKey }) {
     const httpLink = createHttpLink({ uri: graphqlUrl })

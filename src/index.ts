@@ -101,10 +101,14 @@ export async function fetchProduct(args: any, cmsContext: CmsContext, graphqlCon
     }
 }
 
+import { Category, Product } from './types'
+
 module.exports = { 
     CATEGORY_HIERARCHY_QUERY, 
     CATEGORY_QUERY, 
     PRODUCTS_QUERY, 
     PRODUCT_QUERY,
-    fetchProduct 
+    fetchProduct,
+    Category,
+    Product
 }
