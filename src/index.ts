@@ -1,4 +1,7 @@
 const { gql } = require('@apollo/client/core');
+const GraphQL = require('./graphql')
+
+import { GraphqlConfig, CmsContext } from './types'
 
 const commonFields = `
     id
@@ -72,7 +75,7 @@ const lookupArgs = args => {
     }
 }
 
-const PRODUCT_QUERY = args => gql`
+const PRODUCT_QUERY = (args, context) => gql`
     query productQuery {
         product(${lookupArgs(args)}) {
             ${productFields}
@@ -88,4 +91,20 @@ const CATEGORY_QUERY = args => gql`
     }
 `
 
-module.exports = { CATEGORY_HIERARCHY_QUERY, CATEGORY_QUERY, PRODUCTS_QUERY, PRODUCT_QUERY }
+export async function fetchProduct(args: any, cmsContext: CmsContext, graphqlConfig: GraphqlConfig): Promise<any> {
+    try {
+        let graphqlClient = GraphQL(graphqlConfig)
+        return graphqlClient.query({ query: PRODUCT_QUERY(args, cmsContext) }).then(x => x.data.product)
+    }
+    catch (e) {
+        console.error(`Error: ${e}`)
+    }
+}
+
+module.exports = { 
+    CATEGORY_HIERARCHY_QUERY, 
+    CATEGORY_QUERY, 
+    PRODUCTS_QUERY, 
+    PRODUCT_QUERY,
+    fetchProduct 
+}

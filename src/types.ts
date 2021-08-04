@@ -122,3 +122,16 @@ export class SearchResult {
     @Field(type => [Product])
     products: Product[]
 }  
+
+export type CmsContext = {
+    contentApi: string;
+    stagingApi?: string;
+    locale?: string;
+    currency?: string;
+    timestamp?: number;
+}
+
+export type GraphqlConfig = {
+    graphqlUrl: string;
+    backendKey: string;
+}
