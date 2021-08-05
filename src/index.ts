@@ -107,7 +107,8 @@ export async function fetchProduct(args: any, cmsContext: CmsContext, graphqlCon
     }
 }
 
-// import { Category, Product } from './types'
+import { Category, Product } from './types'
+export type { Category, Product }
 
 // module.exports = { 
 //     CATEGORY_HIERARCHY_QUERY, 

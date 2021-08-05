@@ -101,7 +101,7 @@ async function fetchProduct(args, cmsContext, graphqlConfig) {
     }
 }
 exports.fetchProduct = fetchProduct;
-// import { Category, Product } from './types'
+const types_1 = require("./types");
 // module.exports = { 
 //     CATEGORY_HIERARCHY_QUERY, 
 //     CATEGORY_QUERY, 
