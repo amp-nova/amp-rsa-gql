@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@apollo/client/core");
-function default_1({ graphqlUrl, backendKey }) {
+module.exports = function ({ graphqlUrl, backendKey }) {
     const httpLink = core_1.createHttpLink({ uri: graphqlUrl });
     const authLink = new core_1.ApolloLink((operation, forward) => {
         // add the authorization to the headers
@@ -18,5 +18,4 @@ function default_1({ graphqlUrl, backendKey }) {
         cache: new core_1.InMemoryCache()
     });
     return client;
-}
-exports.default = default_1;
+};
