@@ -35,7 +35,7 @@ const productFields = `
     }
 `
 
-const CATEGORY_HIERARCHY_QUERY = gql`    
+export const CATEGORY_HIERARCHY_QUERY = gql`    
     query {
         categoryHierarchy {
             ${commonFields}
@@ -49,7 +49,7 @@ const CATEGORY_HIERARCHY_QUERY = gql`
     }
 `
 
-const PRODUCTS_QUERY = args => gql`
+export const PRODUCTS_QUERY = args => gql`
     query productsQuery {
         ${args.keyword ? `products(keyword:"${args.keyword}")` : `products`} {
             ${meta}
@@ -75,7 +75,7 @@ const lookupArgs = args => {
     }
 }
 
-const PRODUCT_QUERY = (args, context) => gql`
+export const PRODUCT_QUERY = (args, context) => gql`
     query productQuery {
         product(${lookupArgs(args)}) {
             ${productFields}
@@ -83,7 +83,7 @@ const PRODUCT_QUERY = (args, context) => gql`
     }
 `
 
-const CATEGORY_QUERY = args => gql`
+export const CATEGORY_QUERY = args => gql`
     query categoryQuery {
         category(${lookupArgs(args)}) {
             ${commonFields}
