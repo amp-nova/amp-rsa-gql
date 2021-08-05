@@ -89,6 +89,9 @@ export const CATEGORY_QUERY = args => gql`
     query categoryQuery {
         category(${lookupArgs(args)}) {
             ${commonFields}
+            products {
+                ${productFields}
+            }
         }
     }
 `
