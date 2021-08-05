@@ -97,13 +97,13 @@ async function fetchProduct(args, cmsContext, graphqlConfig) {
     }
 }
 exports.fetchProduct = fetchProduct;
-const types_1 = require("./types");
-module.exports = {
-    CATEGORY_HIERARCHY_QUERY: exports.CATEGORY_HIERARCHY_QUERY,
-    CATEGORY_QUERY: exports.CATEGORY_QUERY,
-    PRODUCTS_QUERY: exports.PRODUCTS_QUERY,
-    PRODUCT_QUERY: exports.PRODUCT_QUERY,
-    fetchProduct,
-    Category: types_1.Category,
-    Product: types_1.Product
-};
+// import { Category, Product } from './types'
+// module.exports = { 
+//     CATEGORY_HIERARCHY_QUERY, 
+//     CATEGORY_QUERY, 
+//     PRODUCTS_QUERY, 
+//     PRODUCT_QUERY,
+//     fetchProduct,
+//     Category,
+//     Product
+// }
