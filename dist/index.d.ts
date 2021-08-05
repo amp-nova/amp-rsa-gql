@@ -8,5 +8,4 @@ export declare function fetchProduct(args: any, cmsContext: CmsContext, graphqlC
 export declare function fetchProducts(ids: String[], cmsContext: CmsContext, graphqlConfig: GraphqlConfig): Promise<any>;
 export declare function queryProducts(args: any, cmsContext: CmsContext, graphqlConfig: GraphqlConfig): Promise<any>;
 export declare function searchProducts(args: any, cmsContext: CmsContext, graphqlConfig: GraphqlConfig): Promise<any>;
-import { Category, Product } from './types';
-export type { Category, Product };
+export * from './types';

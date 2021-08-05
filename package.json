@@ -1,5 +1,5 @@
 {
-  "name": "amp-rsa-gql-queries",
+  "name": "amp-rsa-gql",
   "version": "1.0.0",
   "description": "gql queries for amp-rsa",
   "main": "dist/index.js",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/amp-nova/amp-rsa-gql-queries.git"
+    "url": "git+https://github.com/amp-nova/amp-rsa-gql.git"
   },
   "author": "dave lilly",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/amp-nova/amp-rsa-gql-queries/issues"
+    "url": "https://github.com/amp-nova/amp-rsa-gql/issues"
   },
-  "homepage": "https://github.com/amp-nova/amp-rsa-gql-queries#readme",
+  "homepage": "https://github.com/amp-nova/amp-rsa-gql#readme",
   "dependencies": {
     "@apollo/client": "^3.4.5",
     "class-validator": "^0.13.1",

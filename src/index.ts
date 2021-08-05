@@ -142,8 +142,10 @@ export async function searchProducts(args: any, cmsContext: CmsContext, graphqlC
     }
 }
 
-import { Category, Product } from './types'
-export type { Category, Product }
+export * from './types'
+
+// import { Category, Product, Prices, ProductImage, ResultsMeta, ProductResults, CategoryResults, Attribute, Variant } from './types'
+// export { Category, Product, Prices, ProductImage, ResultsMeta, ProductResults, CategoryResults, Attribute, Variant }
 
 // module.exports = { 
 //     CATEGORY_HIERARCHY_QUERY, 

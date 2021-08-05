@@ -1,4 +1,14 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.searchProducts = exports.queryProducts = exports.fetchProducts = exports.fetchProduct = exports.CATEGORY_QUERY = exports.PRODUCT_QUERY = exports.PRODUCTS_QUERY = exports.CATEGORY_HIERARCHY_QUERY = void 0;
 require("reflect-metadata");
@@ -135,7 +145,9 @@ async function searchProducts(args, cmsContext, graphqlConfig) {
     }
 }
 exports.searchProducts = searchProducts;
-const types_1 = require("./types");
+__exportStar(require("./types"), exports);
+// import { Category, Product, Prices, ProductImage, ResultsMeta, ProductResults, CategoryResults, Attribute, Variant } from './types'
+// export { Category, Product, Prices, ProductImage, ResultsMeta, ProductResults, CategoryResults, Attribute, Variant }
 // module.exports = { 
 //     CATEGORY_HIERARCHY_QUERY, 
 //     CATEGORY_QUERY, 
