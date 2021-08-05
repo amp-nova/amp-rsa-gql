@@ -1,4 +1,8 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.fetchProduct = void 0;
 const { gql } = require('@apollo/client/core');
+const GraphQL = require('./graphql-client');
 const commonFields = `
     id
     name
@@ -65,7 +69,7 @@ const lookupArgs = args => {
         throw new Error("id, sku, or slug must be specified");
     }
 };
-const PRODUCT_QUERY = args => gql `
+const PRODUCT_QUERY = (args, context) => gql `
     query productQuery {
         product(${lookupArgs(args)}) {
             ${productFields}
@@ -79,4 +83,23 @@ const CATEGORY_QUERY = args => gql `
         }
     }
 `;
-module.exports = { CATEGORY_HIERARCHY_QUERY, CATEGORY_QUERY, PRODUCTS_QUERY, PRODUCT_QUERY };
+async function fetchProduct(args, cmsContext, graphqlConfig) {
+    try {
+        let graphqlClient = GraphQL(graphqlConfig);
+        return graphqlClient.query({ query: PRODUCT_QUERY(args, cmsContext) }).then(x => x.data.product);
+    }
+    catch (e) {
+        console.error(`Error: ${e}`);
+    }
+}
+exports.fetchProduct = fetchProduct;
+const types_1 = require("./types");
+module.exports = {
+    CATEGORY_HIERARCHY_QUERY,
+    CATEGORY_QUERY,
+    PRODUCTS_QUERY,
+    PRODUCT_QUERY,
+    fetchProduct,
+    Category: types_1.Category,
+    Product: types_1.Product
+};

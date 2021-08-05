@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "noImplicitAny": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "baseUrl": "./src",
@@ -9,7 +10,7 @@
     "target": "es2019",
     "module": "commonjs",
     "resolveJsonModule": true,
-    "lib": ["es2019", "esnext.asynciterable"],
+    "lib": ["es2019", "esnext.asynciterable", "dom"],
     "paths": {
       "@/*": ["src/*"]
     },
@@ -17,7 +18,8 @@
   },
   "include": [
     "src/**/*",
-    "config/**/*"
+    "config/**/*",
+    "global.d.ts"
   ],
   "exclude": [
     "node_modules",

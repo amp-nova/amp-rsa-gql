@@ -1,5 +1,5 @@
 const { gql } = require('@apollo/client/core');
-const GraphQL = require('./graphql')
+const GraphQL = require('./graphql-client')
 
 import { GraphqlConfig, CmsContext } from './types'
 
