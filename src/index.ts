@@ -52,7 +52,7 @@ export const CATEGORY_HIERARCHY_QUERY = gql`
     }
 `
 
-export const PRODUCTS_QUERY = args => gql`
+export const PRODUCTS_QUERY = (args, context) => gql`
     query productsQuery {
         ${args.keyword ? `products(keyword:"${args.keyword}")` : `products`} {
             ${meta}
@@ -86,7 +86,7 @@ export const PRODUCT_QUERY = (args, context) => gql`
     }
 `
 
-export const CATEGORY_QUERY = args => gql`
+export const CATEGORY_QUERY = (args, context) => gql`
     query categoryQuery {
         category(${lookupArgs(args)}) {
             ${commonFields}
@@ -101,6 +101,41 @@ export async function fetchProduct(args: any, cmsContext: CmsContext, graphqlCon
     try {
         let graphqlClient = GraphQL(graphqlConfig)
         return graphqlClient.query({ query: PRODUCT_QUERY(args, cmsContext) }).then(x => x.data.product)
+    }
+    catch (e) {
+        console.error(`Error: ${e}`)
+    }
+}
+
+export async function fetchProducts(ids: String[], cmsContext: CmsContext, graphqlConfig: GraphqlConfig): Promise<any> {
+    try {
+        let graphqlClient = GraphQL(graphqlConfig)
+        let x = await Promise.all(ids.map(async prodId => {
+            return await fetchProduct({ id: prodId }, cmsContext, graphqlConfig)
+        }))
+
+        return new Promise((resolve, reject) => { resolve(x) })
+    }
+    catch (e) {
+        console.error(`Error: ${e}`)
+    }
+}
+
+export async function queryProducts(args: any, cmsContext: CmsContext, graphqlConfig: GraphqlConfig): Promise<any> {
+    args.full = args.full || false
+    let graphqlClient = GraphQL(graphqlConfig)
+    try {
+        return graphqlClient.query({ query: CATEGORY_QUERY(args, cmsContext) }).then(x => x.data.category)
+    }
+    catch (e) {
+        console.error(`Error: ${e}`)
+    }
+}
+
+export async function searchProducts(args: any, cmsContext: CmsContext, graphqlConfig: GraphqlConfig): Promise<any> {
+    try {
+        let graphqlClient = GraphQL(graphqlConfig)
+        return graphqlClient.query({ query: PRODUCTS_QUERY(args, cmsContext) }).then(x => x.data.products.results)
     }
     catch (e) {
         console.error(`Error: ${e}`)

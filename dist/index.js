@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fetchProduct = exports.CATEGORY_QUERY = exports.PRODUCT_QUERY = exports.PRODUCTS_QUERY = exports.CATEGORY_HIERARCHY_QUERY = void 0;
+exports.searchProducts = exports.queryProducts = exports.fetchProducts = exports.fetchProduct = exports.CATEGORY_QUERY = exports.PRODUCT_QUERY = exports.PRODUCTS_QUERY = exports.CATEGORY_HIERARCHY_QUERY = void 0;
 require("reflect-metadata");
 const { gql } = require('@apollo/client/core');
 const GraphQL = require('./graphql-client');
@@ -47,7 +47,7 @@ exports.CATEGORY_HIERARCHY_QUERY = gql `
         }
     }
 `;
-const PRODUCTS_QUERY = args => gql `
+const PRODUCTS_QUERY = (args, context) => gql `
     query productsQuery {
         ${args.keyword ? `products(keyword:"${args.keyword}")` : `products`} {
             ${meta}
@@ -80,7 +80,7 @@ const PRODUCT_QUERY = (args, context) => gql `
     }
 `;
 exports.PRODUCT_QUERY = PRODUCT_QUERY;
-const CATEGORY_QUERY = args => gql `
+const CATEGORY_QUERY = (args, context) => gql `
     query categoryQuery {
         category(${lookupArgs(args)}) {
             ${commonFields}
@@ -101,6 +101,40 @@ async function fetchProduct(args, cmsContext, graphqlConfig) {
     }
 }
 exports.fetchProduct = fetchProduct;
+async function fetchProducts(ids, cmsContext, graphqlConfig) {
+    try {
+        let graphqlClient = GraphQL(graphqlConfig);
+        let x = await Promise.all(ids.map(async (prodId) => {
+            return await fetchProduct({ id: prodId }, cmsContext, graphqlConfig);
+        }));
+        return new Promise((resolve, reject) => { resolve(x); });
+    }
+    catch (e) {
+        console.error(`Error: ${e}`);
+    }
+}
+exports.fetchProducts = fetchProducts;
+async function queryProducts(args, cmsContext, graphqlConfig) {
+    args.full = args.full || false;
+    let graphqlClient = GraphQL(graphqlConfig);
+    try {
+        return graphqlClient.query({ query: exports.CATEGORY_QUERY(args, cmsContext) }).then(x => x.data.category);
+    }
+    catch (e) {
+        console.error(`Error: ${e}`);
+    }
+}
+exports.queryProducts = queryProducts;
+async function searchProducts(args, cmsContext, graphqlConfig) {
+    try {
+        let graphqlClient = GraphQL(graphqlConfig);
+        return graphqlClient.query({ query: exports.PRODUCTS_QUERY(args, cmsContext) }).then(x => x.data.products.results);
+    }
+    catch (e) {
+        console.error(`Error: ${e}`);
+    }
+}
+exports.searchProducts = searchProducts;
 const types_1 = require("./types");
 // module.exports = { 
 //     CATEGORY_HIERARCHY_QUERY, 
