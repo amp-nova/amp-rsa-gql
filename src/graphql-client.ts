@@ -1,5 +1,4 @@
 import { createHttpLink, ApolloClient, InMemoryCache, ApolloLink } from '@apollo/client/core';
-import {} from './types'
 
 module.exports = function({ graphqlUrl, backendKey }) {
     const httpLink = createHttpLink({ uri: graphqlUrl })

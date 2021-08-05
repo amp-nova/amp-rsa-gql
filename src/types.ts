@@ -2,10 +2,10 @@ import { Field, ObjectType } from "type-graphql";
 
 @ObjectType()
 export class Prices {
-    @Field()
+    @Field({ nullable: true })
     sale: string
 
-    @Field()
+    @Field({ nullable: true })
     list: string
 }
 
