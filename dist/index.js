@@ -25,6 +25,7 @@ const productFields = `
     }
     variants {
         sku
+        articleNumberMax: attribute(name: "articleNumberMax")
         prices {
             list
         }
