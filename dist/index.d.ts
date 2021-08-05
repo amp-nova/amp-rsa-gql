@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { GraphqlConfig, CmsContext } from './types';
 export declare const CATEGORY_HIERARCHY_QUERY: any;
 export declare const PRODUCTS_QUERY: (args: any) => any;

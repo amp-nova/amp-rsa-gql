@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fetchProduct = exports.CATEGORY_QUERY = exports.PRODUCT_QUERY = exports.PRODUCTS_QUERY = exports.CATEGORY_HIERARCHY_QUERY = void 0;
+require("reflect-metadata");
 const { gql } = require('@apollo/client/core');
 const GraphQL = require('./graphql-client');
 const commonFields = `
