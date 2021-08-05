@@ -1,3 +1,5 @@
+import "reflect-metadata"
+
 const { gql } = require('@apollo/client/core');
 const GraphQL = require('./graphql-client')
 
