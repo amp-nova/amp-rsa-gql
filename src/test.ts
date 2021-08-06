@@ -20,7 +20,6 @@ let run = async() => {
 
     let bkResponse = await axios.get(`${graphqlHost}/keys`)
     backendKeys = bkResponse.data.keys
-    console.log(backendKeys)
 
     async.eachSeries(backendKeys, async backendKey => {
         let mapped = {}
