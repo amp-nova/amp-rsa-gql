@@ -79,6 +79,9 @@ export class Product extends CommerceObject {
 
     @Field(type => [Variant])
     variants: Variant[]
+
+    @Field()
+    productType: string    
 }
 
 @ObjectType()

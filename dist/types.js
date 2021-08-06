@@ -132,6 +132,10 @@ __decorate([
     type_graphql_1.Field(type => [Variant]),
     __metadata("design:type", Array)
 ], Product.prototype, "variants", void 0);
+__decorate([
+    type_graphql_1.Field(),
+    __metadata("design:type", String)
+], Product.prototype, "productType", void 0);
 Product = __decorate([
     type_graphql_1.ObjectType()
 ], Product);

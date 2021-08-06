@@ -38,6 +38,7 @@ const productFields = `
         articleNumberMax: attribute(name: "articleNumberMax")
         prices {
             list
+            sale
         }
         images {
             url

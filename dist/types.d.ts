@@ -32,6 +32,7 @@ export declare class Product extends CommerceObject {
     longDescription: string;
     categories: Category[];
     variants: Variant[];
+    productType: string;
 }
 export declare class Attribute {
     name: string;
