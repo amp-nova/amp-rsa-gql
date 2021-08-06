@@ -63,3 +63,41 @@ export declare type GraphqlConfig = {
     graphqlUrl: string;
     backendKey: string;
 };
+export declare type GraphQLQueryConfig = {
+    cmsContext?: CmsContext;
+    graphqlConfig: GraphqlConfig;
+    args?: any;
+};
+export declare class CommonArgs {
+    locale: string;
+    currency: string;
+}
+export declare class ListArgs extends CommonArgs {
+    limit: number;
+    offset: number;
+}
+export declare class Context {
+    backendKey: string;
+    commercehub: any;
+}
+export declare class GetCategoryArgs extends CommonArgs {
+    id: string;
+    slug: string;
+}
+export declare class GetCategoryProductArgs extends CommonArgs {
+    full: boolean;
+    customerSegment: string;
+}
+export declare class GetProductsArgs extends ListArgs {
+    keyword: string;
+    customerSegment: string;
+}
+export declare class GetProductArgs extends CommonArgs {
+    id: string;
+    sku: string;
+    slug: string;
+    customerSegment: string;
+}
+export declare class GetAttributeArgs {
+    name: string;
+}

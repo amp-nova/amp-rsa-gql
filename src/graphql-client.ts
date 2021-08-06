@@ -1,24 +1,25 @@
-import { createHttpLink, ApolloClient, InMemoryCache, ApolloLink } from '@apollo/client/core';
+import { createHttpLink, ApolloClient, InMemoryCache, ApolloLink, HttpLink } from '@apollo/client/core';
+import fetch from 'node-fetch'
 
-module.exports = function({ graphqlUrl, backendKey }) {
-    const httpLink = createHttpLink({ uri: graphqlUrl })
+export default function({ graphqlUrl, backendKey }) {
+  const httpLink = createHttpLink({ uri: graphqlUrl, fetch: fetch })
+
+  const authLink = new ApolloLink((operation, forward) => {
+    // add the authorization to the headers
+    operation.setContext(({ headers = {} }) => ({
+        headers: {
+            ...headers,
+            'X-Commerce-Backend-Key': backendKey,
+        }
+    }));
+
+    return forward(operation);
+})
   
-    const authLink = new ApolloLink((operation, forward) => {
-      // add the authorization to the headers
-      operation.setContext(({ headers = {} }) => ({
-          headers: {
-              ...headers,
-              'X-Commerce-Backend-Key': backendKey,
-          }
-      }));
+  let client = new ApolloClient({
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache()
+  });
 
-      return forward(operation);
-  })
-    
-    let client = new ApolloClient({
-      link: authLink.concat(httpLink),
-      cache: new InMemoryCache()
-    });
-
-    return client
+  return client
 }

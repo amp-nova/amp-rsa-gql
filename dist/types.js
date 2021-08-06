@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var Category_1;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SearchResult = exports.Category = exports.Variant = exports.Attribute = exports.Product = exports.CommerceObject = exports.Identifiable = exports.CategoryResults = exports.ProductResults = exports.ResultsMeta = exports.ProductImage = exports.Prices = void 0;
+exports.GetAttributeArgs = exports.GetProductArgs = exports.GetProductsArgs = exports.GetCategoryProductArgs = exports.GetCategoryArgs = exports.Context = exports.ListArgs = exports.CommonArgs = exports.SearchResult = exports.Category = exports.Variant = exports.Attribute = exports.Product = exports.CommerceObject = exports.Identifiable = exports.CategoryResults = exports.ProductResults = exports.ResultsMeta = exports.ProductImage = exports.Prices = void 0;
 const type_graphql_1 = require("type-graphql");
 let Prices = class Prices {
 };
@@ -204,3 +204,108 @@ SearchResult = __decorate([
     type_graphql_1.ObjectType()
 ], SearchResult);
 exports.SearchResult = SearchResult;
+let CommonArgs = class CommonArgs {
+};
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", String)
+], CommonArgs.prototype, "locale", void 0);
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", String)
+], CommonArgs.prototype, "currency", void 0);
+CommonArgs = __decorate([
+    type_graphql_1.ArgsType()
+], CommonArgs);
+exports.CommonArgs = CommonArgs;
+let ListArgs = class ListArgs extends CommonArgs {
+};
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", Number)
+], ListArgs.prototype, "limit", void 0);
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", Number)
+], ListArgs.prototype, "offset", void 0);
+ListArgs = __decorate([
+    type_graphql_1.ArgsType()
+], ListArgs);
+exports.ListArgs = ListArgs;
+class Context {
+}
+exports.Context = Context;
+let GetCategoryArgs = class GetCategoryArgs extends CommonArgs {
+};
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", String)
+], GetCategoryArgs.prototype, "id", void 0);
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", String)
+], GetCategoryArgs.prototype, "slug", void 0);
+GetCategoryArgs = __decorate([
+    type_graphql_1.ArgsType()
+], GetCategoryArgs);
+exports.GetCategoryArgs = GetCategoryArgs;
+let GetCategoryProductArgs = class GetCategoryProductArgs extends CommonArgs {
+};
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", Boolean)
+], GetCategoryProductArgs.prototype, "full", void 0);
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", String)
+], GetCategoryProductArgs.prototype, "customerSegment", void 0);
+GetCategoryProductArgs = __decorate([
+    type_graphql_1.ArgsType()
+], GetCategoryProductArgs);
+exports.GetCategoryProductArgs = GetCategoryProductArgs;
+let GetProductsArgs = class GetProductsArgs extends ListArgs {
+};
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", String)
+], GetProductsArgs.prototype, "keyword", void 0);
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", String)
+], GetProductsArgs.prototype, "customerSegment", void 0);
+GetProductsArgs = __decorate([
+    type_graphql_1.ArgsType()
+], GetProductsArgs);
+exports.GetProductsArgs = GetProductsArgs;
+let GetProductArgs = class GetProductArgs extends CommonArgs {
+};
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", String)
+], GetProductArgs.prototype, "id", void 0);
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", String)
+], GetProductArgs.prototype, "sku", void 0);
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", String)
+], GetProductArgs.prototype, "slug", void 0);
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", String)
+], GetProductArgs.prototype, "customerSegment", void 0);
+GetProductArgs = __decorate([
+    type_graphql_1.ArgsType()
+], GetProductArgs);
+exports.GetProductArgs = GetProductArgs;
+let GetAttributeArgs = class GetAttributeArgs {
+};
+__decorate([
+    type_graphql_1.Field(),
+    __metadata("design:type", String)
+], GetAttributeArgs.prototype, "name", void 0);
+GetAttributeArgs = __decorate([
+    type_graphql_1.ArgsType()
+], GetAttributeArgs);
+exports.GetAttributeArgs = GetAttributeArgs;

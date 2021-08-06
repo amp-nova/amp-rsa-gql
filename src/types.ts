@@ -1,4 +1,4 @@
-import { Field, ObjectType } from "type-graphql";
+import { ArgsType, Field, ObjectType } from "type-graphql";
 
 @ObjectType()
 export class Prices {
@@ -137,4 +137,81 @@ export type CmsContext = {
 export type GraphqlConfig = {
     graphqlUrl: string;
     backendKey: string;
+}
+
+export type GraphQLQueryConfig = {
+    cmsContext?: CmsContext
+    graphqlConfig: GraphqlConfig
+    args?: any
+}
+
+@ArgsType()
+export class CommonArgs {
+    @Field({ nullable: true })
+    locale: string
+
+    @Field({ nullable: true })
+    currency: string
+}
+
+@ArgsType()
+export class ListArgs extends CommonArgs {
+    @Field({ nullable: true })
+    limit: number
+
+    @Field({ nullable: true })
+    offset: number
+}
+
+export class Context {
+    backendKey: string
+    commercehub: any
+}
+
+@ArgsType()
+export class GetCategoryArgs extends CommonArgs {
+    @Field({ nullable: true })
+    id: string
+
+    @Field({ nullable: true })
+    slug: string
+}
+
+@ArgsType()
+export class GetCategoryProductArgs extends CommonArgs {
+    @Field({ nullable: true })
+    full: boolean
+
+    @Field({ nullable: true })
+    customerSegment: string
+}
+
+@ArgsType()
+export class GetProductsArgs extends ListArgs {
+    @Field({ nullable: true })
+    keyword: string
+
+    @Field({ nullable: true })
+    customerSegment: string
+}
+
+@ArgsType()
+export class GetProductArgs extends CommonArgs {
+    @Field({ nullable: true })
+    id: string
+
+    @Field({ nullable: true })
+    sku: string
+
+    @Field({ nullable: true })
+    slug: string
+
+    @Field({ nullable: true })
+    customerSegment: string
+}
+
+@ArgsType()
+export class GetAttributeArgs {
+    @Field()
+    name: string
 }
