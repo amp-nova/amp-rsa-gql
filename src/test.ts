@@ -22,6 +22,7 @@ let run = async() => {
     backendKeys = bkResponse.data.keys
 
     async.eachSeries(backendKeys, async backendKey => {
+        let graphqlConfig = { graphqlUrl, backendKey }
         let mapped = {}
         let flattenCategories = cats => {
             _.each(cats, cat => {
@@ -35,7 +36,7 @@ let run = async() => {
         console.log('-'.padStart(backendKey.length, '-'))
         console.log()
     
-        let productsResponse = await fetchAllProducts({ graphqlConfig: { graphqlUrl, backendKey } })
+        let productsResponse = await fetchAllProducts({ graphqlConfig })
         console.log(`    products:         [ ${chalk.magenta(productsResponse.meta.total)} ]`)
     
         // let topLevelCategories = (await client.query({ query: CATEGORY_HIERARCHY_QUERY })).data.categoryHierarchy
