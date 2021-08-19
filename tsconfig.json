@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
+    "declaration": true,
     "noImplicitAny": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "baseUrl": "./src",
     "outDir": "dist",
+    "rootDir": "./src",
     "allowJs": true,
     "esModuleInterop": true,
     "target": "es2019",
@@ -18,8 +20,7 @@
   },
   "include": [
     "src/**/*",
-    "config/**/*",
-    "global.d.ts"
+    "config/**/*"
   ],
   "exclude": [
     "node_modules",

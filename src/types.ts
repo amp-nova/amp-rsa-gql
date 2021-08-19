@@ -109,6 +109,10 @@ export class Variant extends Identifiable {
 
     @Field(type => [Attribute])
     attributes: Attribute[]
+
+    color?: string
+    size?: string
+    articleNumberMax?: string
 }
     
 @ObjectType()
@@ -157,7 +161,6 @@ export type GraphqlConfig = {
 export type GraphQLQueryConfig = {
     cmsContext?: CmsContext
     userContext?: UserContext
-    graphqlConfig: GraphqlConfig
     args?: any
 }
 

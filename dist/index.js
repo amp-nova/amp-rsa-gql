@@ -20,8 +20,8 @@ __exportStar(require("./types"), exports);
 function default_1(graphqlConfig) {
     let client = graphql_client_1.default(graphqlConfig);
     return {
-        fetchAllProducts: async function (args) {
-            return (await client.query({ query: queries_1.productsQuery(args) })).data.products;
+        fetchAllProducts: async function (config) {
+            return (await client.query({ query: queries_1.productsQuery(config.args) })).data.products;
         },
         fetchProduct: async function (args) {
             return (await client.query({ query: queries_1.productQuery(args) })).data.product;
@@ -29,8 +29,8 @@ function default_1(graphqlConfig) {
         fetchCategoryHierarchy: async function () {
             return (await client.query({ query: queries_1.categoryHierarchyQuery })).data.categoryHierarchy;
         },
-        fetchCategory: async function (args) {
-            return (await client.query({ query: queries_1.categoryQuery(args) })).data.category;
+        fetchCategory: async function (config) {
+            return (await client.query({ query: queries_1.categoryQuery(config.args) })).data.category;
         }
     };
 }
