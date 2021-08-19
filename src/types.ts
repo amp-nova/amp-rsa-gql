@@ -3,10 +3,10 @@ import { ArgsType, Field, ObjectType } from "type-graphql";
 @ObjectType()
 export class Prices {
     @Field({ nullable: true })
-    sale: string
+    sale?: string
 
     @Field({ nullable: true })
-    list: string
+    list?: string
 }
 
 @ObjectType()
@@ -69,10 +69,10 @@ export class CommerceObject extends Identifiable {
 @ObjectType()
 export class Product extends CommerceObject {
     @Field({ nullable: true })
-    shortDescription: string
+    shortDescription?: string
 
     @Field({ nullable: true })
-    longDescription: string
+    longDescription?: string
 
     @Field(type => [Category])
     categories: Category[]
@@ -102,7 +102,7 @@ export class Variant extends Identifiable {
     prices: Prices
 
     @Field({ nullable: true })
-    defaultImage: ProductImage
+    defaultImage?: ProductImage
 
     @Field(type => [ProductImage])
     images: ProductImage[]
@@ -134,6 +134,21 @@ export type CmsContext = {
     timestamp?: number;
 }
 
+export type UserContext = {
+    userId?: string;
+    sessionId?: string;
+
+    language: string;
+    country: string;
+    currency: string;
+    
+    segment?: string;
+    targetingTags: string[];
+    targetingBehaviors: string[];
+
+    dyApiPreview: string | null;
+};
+
 export type GraphqlConfig = {
     graphqlUrl: string;
     backendKey: string;
@@ -141,6 +156,7 @@ export type GraphqlConfig = {
 
 export type GraphQLQueryConfig = {
     cmsContext?: CmsContext
+    userContext?: UserContext
     graphqlConfig: GraphqlConfig
     args?: any
 }
@@ -148,19 +164,19 @@ export type GraphQLQueryConfig = {
 @ArgsType()
 export class CommonArgs {
     @Field({ nullable: true })
-    locale: string
+    locale?: string
 
     @Field({ nullable: true })
-    currency: string
+    currency?: string
 }
 
 @ArgsType()
 export class ListArgs extends CommonArgs {
     @Field({ nullable: true })
-    limit: number
+    limit?: number
 
     @Field({ nullable: true })
-    offset: number
+    offset?: number
 }
 
 export class Context {
@@ -171,43 +187,43 @@ export class Context {
 @ArgsType()
 export class GetCategoryArgs extends CommonArgs {
     @Field({ nullable: true })
-    id: string
+    id?: string
 
     @Field({ nullable: true })
-    slug: string
+    slug?: string
 }
 
 @ArgsType()
 export class GetCategoryProductArgs extends CommonArgs {
     @Field({ nullable: true })
-    full: boolean
+    full?: boolean
 
     @Field({ nullable: true })
-    customerSegment: string
+    customerSegment?: string
 }
 
 @ArgsType()
 export class GetProductsArgs extends ListArgs {
     @Field({ nullable: true })
-    keyword: string
+    keyword?: string
 
     @Field({ nullable: true })
-    customerSegment: string
+    customerSegment?: string
 }
 
 @ArgsType()
 export class GetProductArgs extends CommonArgs {
     @Field({ nullable: true })
-    id: string
+    id?: string
 
     @Field({ nullable: true })
-    sku: string
+    sku?: string
 
     @Field({ nullable: true })
-    slug: string
+    slug?: string
 
     @Field({ nullable: true })
-    customerSegment: string
+    customerSegment?: string
 }
 
 @ArgsType()
