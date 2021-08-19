@@ -1,6 +1,6 @@
 {
   "name": "amp-rsa-gql",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "gql queries for amp-rsa",
   "types": "src/index.ts",
   "main": "src/index.ts",
