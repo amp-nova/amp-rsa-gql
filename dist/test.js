@@ -12,14 +12,14 @@ const axios = require('axios');
 const index_1 = __importDefault(require("./index"));
 let backendKeys = [];
 // command line arguments
-const graphqlHost = nconf.argv().get('graphqlHost') || `http://localhost:3002`;
+const graphqlHost = nconf.argv().get('graphqlHost') || `http://localhost:6393`;
 const graphqlUrl = `${graphqlHost}/graphql`;
 let run = async () => {
     console.log(`Testing against server ${chalk.bgBlueBright(graphqlUrl)}`);
     console.log();
     let bkResponse = await axios.get(`${graphqlHost}/keys`);
     backendKeys = bkResponse.data.keys;
-    backendKeys = [_.first(backendKeys)];
+    // backendKeys = [_.first(backendKeys)]
     async.eachSeries(backendKeys, async (backendKey) => {
         let client = index_1.default({ graphqlUrl, backendKey });
         let mapped = {};

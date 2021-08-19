@@ -13,7 +13,7 @@ import { default as gqlClient, GraphQLClient } from './index'
 let backendKeys = []
 
 // command line arguments
-const graphqlHost = nconf.argv().get('graphqlHost') || `http://localhost:3002`
+const graphqlHost = nconf.argv().get('graphqlHost') || `http://localhost:6393`
 const graphqlUrl = `${graphqlHost}/graphql`
 
 let run = async() => {
@@ -23,7 +23,8 @@ let run = async() => {
     let bkResponse = await axios.get(`${graphqlHost}/keys`)
     backendKeys = bkResponse.data.keys
 
-    backendKeys = [_.first(backendKeys)]
+    // backendKeys = [_.first(backendKeys)]
+    // backendKeys = [_.find(backendKeys, k => k.indexOf('hybris') > -1)]
 
     async.eachSeries(backendKeys, async backendKey => {
         let client: GraphQLClient = gqlClient({ graphqlUrl, backendKey })
