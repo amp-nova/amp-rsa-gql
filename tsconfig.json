@@ -3,6 +3,7 @@
     "declaration": true,
     "noImplicitAny": false,
     "emitDecoratorMetadata": true,
+    "emitDeclarationOnly": true,
     "experimentalDecorators": true,
     "baseUrl": "./src",
     "outDir": "dist",
@@ -16,7 +17,7 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "typeRoots": [ "./src/types", "./node_modules/@types"]
+    "typeRoots": [ "./types", "./node_modules/@types"]
   },
   "include": [
     "src/**/*",
