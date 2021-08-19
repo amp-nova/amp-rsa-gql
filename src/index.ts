@@ -29,5 +29,5 @@ export type GraphQLClient = {
     fetchAllProducts(args?: GetProductsArgs)
     fetchProduct(args: GetProductArgs)
     fetchCategoryHierarchy()
-    fetchCategory(args: GetCategoryArgs)
+    fetchCategory(args: GetCategoryArgs): Promise<Category>
 }

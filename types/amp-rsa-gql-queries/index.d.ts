@@ -1,1 +1,1 @@
-declare module 'amp-rsa-gql-queries'
+declare module 'amp-rsa-gql'
